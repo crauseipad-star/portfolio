@@ -1,0 +1,30 @@
+# Раздача статики на Railway.
+# Railway передаёт порт в переменной PORT.
+{
+	admin off
+	persist_config off
+	auto_https off
+}
+
+:{$PORT:8080} {
+	root * /srv
+	encode gzip zstd
+	file_server
+
+	# кэш для картинок и PDF — они меняются редко
+	@static {
+		path *.jpg *.jpeg *.png *.webp *.svg *.pdf *.ico
+	}
+	header @static Cache-Control "public, max-age=604800"
+
+	# сам HTML не кэшируем, чтобы правки были видны сразу
+	@html {
+		path *.html /
+	}
+	header @html Cache-Control "no-cache"
+
+	header {
+		X-Content-Type-Options "nosniff"
+		Referrer-Policy "strict-origin-when-cross-origin"
+	}
+}

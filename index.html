@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Хан Исаак — SMM-специалист</title>
+<meta name="description" content="Портфолио SMM-специалиста: видеомонтаж, аудиты Instagram, контент-планы, Telegram-боты.">
+<style>
+:root{
+  --bg:#0F1614;
+  --bg-2:#151E1B;
+  --surface:#182320;
+  --surface-2:#1E2C28;
+  --ink:#EAF2EF;
+  --ink-soft:#9DB0AA;
+  --ink-mute:#6C817B;
+  --accent:#2FD39A;
+  --accent-2:#17A97A;
+  --accent-soft:rgba(47,211,154,.12);
+  --line:rgba(160,200,188,.14);
+  --line-2:rgba(160,200,188,.26);
+  --shadow:0 18px 50px rgba(0,0,0,.5);
+  --radius:18px;
+  --maxw:1180px;
+}
+:root[data-theme="light"]{
+  --bg:#F6F4EF;
+  --bg-2:#FFFFFF;
+  --surface:#FFFFFF;
+  --surface-2:#F1EFE8;
+  --ink:#14201C;
+  --ink-soft:#55635E;
+  --ink-mute:#8A9994;
+  --accent:#0F7B5F;
+  --accent-2:#0A5A45;
+  --accent-soft:rgba(15,123,95,.10);
+  --line:rgba(20,32,28,.12);
+  --line-2:rgba(20,32,28,.22);
+  --shadow:0 18px 50px rgba(20,40,34,.14);
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;
+  background:var(--bg);color:var(--ink);line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  transition:background .4s ease,color .4s ease;
+  overflow-x:hidden;
+}
+body.locked{overflow:hidden}
+a{color:inherit}
+
+/* ---------- ФОНОВОЕ СВЕЧЕНИЕ ---------- */
+.glow{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.glow span{
+  position:absolute;border-radius:50%;filter:blur(90px);
+  background:radial-gradient(circle,var(--accent) 0%,transparent 70%);
+  animation:drift 22s ease-in-out infinite;
+}
+.glow span:nth-child(1){width:520px;height:520px;top:-160px;left:-120px;opacity:.22}
+.glow span:nth-child(2){width:420px;height:420px;bottom:-150px;right:-100px;opacity:.16;animation-delay:-8s}
+.glow span:nth-child(3){width:300px;height:300px;top:40%;right:18%;opacity:.10;animation-delay:-15s}
+:root[data-theme="light"] .glow span{opacity:.10}
+@keyframes drift{
+  0%,100%{transform:translate(0,0) scale(1)}
+  33%{transform:translate(40px,-30px) scale(1.08)}
+  66%{transform:translate(-30px,25px) scale(.95)}
+}
+
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px;position:relative;z-index:1}
+
+/* ---------- ШАПКА ---------- */
+.topbar{
+  position:fixed;top:0;left:0;right:0;z-index:60;
+  padding:16px 0;
+  backdrop-filter:blur(14px);
+  background:color-mix(in srgb,var(--bg) 78%,transparent);
+  border-bottom:1px solid transparent;
+  transition:border-color .3s ease,padding .3s ease;
+}
+.topbar.scrolled{border-bottom-color:var(--line);padding:11px 0}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:14px}
+.brand{font-weight:700;letter-spacing:-.01em;font-size:16px;text-decoration:none;display:flex;align-items:center;gap:9px}
+.brand .mark{
+  width:26px;height:26px;border-radius:7px;flex-shrink:0;
+  background:linear-gradient(135deg,var(--accent),var(--accent-2));
+  display:grid;place-items:center;color:#04120D;font-size:12px;font-weight:800;
+}
+.topbar-actions{display:flex;align-items:center;gap:10px}
+
+.icon-btn{
+  width:38px;height:38px;border-radius:10px;flex-shrink:0;
+  border:1px solid var(--line);background:var(--surface);
+  color:var(--ink);cursor:pointer;
+  display:grid;place-items:center;
+  transition:border-color .2s ease,transform .2s ease,background .2s ease;
+}
+.icon-btn:hover{border-color:var(--accent);transform:translateY(-1px)}
+.icon-btn svg{width:17px;height:17px;stroke:currentColor;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.icon-btn .sun{display:none}
+:root[data-theme="light"] .icon-btn .sun{display:block}
+:root[data-theme="light"] .icon-btn .moon{display:none}
+
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:11px 20px;border-radius:11px;
+  font-size:14.5px;font-weight:600;text-decoration:none;cursor:pointer;
+  border:1px solid transparent;white-space:nowrap;
+  transition:transform .18s ease,box-shadow .18s ease,background .18s ease,border-color .18s ease;
+}
+.btn svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.btn-primary{background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#04120D;box-shadow:0 4px 18px rgba(47,211,154,.26)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 26px rgba(47,211,154,.36)}
+:root[data-theme="light"] .btn-primary{color:#fff;box-shadow:0 4px 18px rgba(15,123,95,.24)}
+.btn-ghost{background:var(--surface);border-color:var(--line);color:var(--ink)}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
+
+/* ---------- ГЛАВНЫЙ ЭКРАН ---------- */
+#home{
+  min-height:100svh;
+  display:flex;flex-direction:column;justify-content:center;
+  padding:96px 0 32px;
+  transition:opacity .45s ease,transform .45s ease,filter .45s ease;
+}
+#home.hidden{
+  opacity:0;transform:scale(.97) translateY(-12px);
+  filter:blur(6px);pointer-events:none;
+}
+
+.hero{display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:start;margin-bottom:26px}
+.avatar{
+  width:104px;height:104px;border-radius:26px;flex-shrink:0;overflow:hidden;
+  border:1px solid var(--line-2);background:var(--surface);
+  display:grid;place-items:center;
+  font-size:34px;font-weight:800;letter-spacing:-.02em;
+  color:var(--accent);
+  box-shadow:var(--shadow);
+}
+.avatar img{width:100%;height:100%;object-fit:cover;display:block}
+
+.hero h1{
+  font-size:clamp(30px,5vw,50px);line-height:1.05;letter-spacing:-.025em;font-weight:800;
+  margin-bottom:8px;
+}
+.hero .role{
+  display:flex;align-items:center;gap:9px;flex-wrap:wrap;
+  font-size:15.5px;color:var(--ink-soft);margin-bottom:14px;
+}
+.hero .role b{color:var(--accent);font-weight:650}
+.hero .role .sep{width:4px;height:4px;border-radius:50%;background:var(--ink-mute)}
+.status{
+  display:inline-flex;align-items:center;gap:7px;
+  font-size:13px;font-weight:600;color:var(--accent);
+  background:var(--accent-soft);border:1px solid var(--line);
+  padding:4px 11px;border-radius:20px;
+}
+.status i{width:6px;height:6px;border-radius:50%;background:var(--accent);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.45;transform:scale(.8)}}
+
+.pitch{font-size:17px;color:var(--ink-soft);max-width:62ch}
+.pitch b{color:var(--ink);font-weight:650}
+
+.hero-facts{display:grid;gap:6px;margin-top:14px;max-width:64ch}
+.hero-facts span{
+  font-size:14.5px;color:var(--ink-soft);
+  padding-left:19px;position:relative;
+}
+.hero-facts span::before{
+  content:"";position:absolute;left:0;top:9px;
+  width:6px;height:6px;border-radius:50%;
+  background:var(--accent);opacity:.7;
+}
+.hero-tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+
+/* ---------- КОНТАКТЫ НА ГЛАВНОЙ ---------- */
+.home-foot{
+  margin-top:26px;padding-top:20px;
+  border-top:1px solid var(--line);
+  display:flex;align-items:center;gap:18px;flex-wrap:wrap;
+}
+.foot-label{
+  font-size:11.5px;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--ink-mute);font-weight:700;
+}
+.foot-links{display:flex;gap:10px;flex-wrap:wrap}
+
+/* ---------- СЕТКА КАРТОЧЕК ---------- */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:16px;
+}
+.card{
+  position:relative;overflow:hidden;
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  padding:20px 18px;
+  cursor:pointer;text-align:left;
+  color:inherit;font:inherit;
+  display:flex;flex-direction:column;gap:12px;
+  min-height:146px;
+  transition:transform .28s cubic-bezier(.22,1,.36,1),border-color .28s ease,box-shadow .28s ease,background .28s ease;
+  opacity:0;transform:translateY(26px);
+}
+.card.in{opacity:1;transform:translateY(0)}
+.card::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(420px circle at var(--mx,50%) var(--my,0%),var(--accent-soft),transparent 42%);
+  opacity:0;transition:opacity .3s ease;
+}
+.card:hover{
+  transform:translateY(-6px);
+  border-color:var(--line-2);
+  box-shadow:var(--shadow);
+  background:var(--surface-2);
+}
+.card:hover::after{opacity:1}
+.card:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+.card .ico{
+  width:44px;height:44px;border-radius:12px;flex-shrink:0;
+  background:var(--accent-soft);border:1px solid var(--line);
+  display:grid;place-items:center;
+  transition:transform .28s cubic-bezier(.22,1,.36,1);
+}
+.card:hover .ico{transform:scale(1.08) rotate(-4deg)}
+.card .ico svg{width:21px;height:21px;stroke:var(--accent);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+
+.card h3{font-size:17.5px;font-weight:700;letter-spacing:-.015em;line-height:1.25}
+.card .sub{font-size:13.5px;color:var(--ink-mute);margin-top:-6px}
+.card .go{
+  margin-top:auto;display:inline-flex;align-items:center;gap:6px;
+  font-size:13.5px;font-weight:650;color:var(--accent);
+}
+.card .go .arr{transition:transform .25s ease}
+.card:hover .go .arr{transform:translateX(4px)}
+
+/* ---------- ЭКРАН КАРТОЧКИ ---------- */
+.panel{
+  position:fixed;inset:0;z-index:80;
+  background:var(--bg);
+  overflow-y:auto;overflow-x:hidden;
+  opacity:0;visibility:hidden;
+  transform:scale(.98);
+  transition:opacity .38s ease,transform .38s cubic-bezier(.22,1,.36,1),visibility .38s;
+}
+.panel.open{opacity:1;visibility:visible;transform:scale(1)}
+
+.panel-bar{
+  position:sticky;top:0;z-index:5;
+  padding:14px 0;
+  background:color-mix(in srgb,var(--bg) 88%,transparent);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line);
+}
+.panel-bar .wrap{display:flex;align-items:center;justify-content:space-between;gap:14px}
+.back{
+  display:inline-flex;align-items:center;gap:9px;
+  background:none;border:0;cursor:pointer;
+  color:var(--ink);font:inherit;font-size:14.5px;font-weight:600;
+  padding:8px 4px;border-radius:9px;
+  transition:color .2s ease,transform .2s ease;
+}
+.back:hover{color:var(--accent);transform:translateX(-4px)}
+.back svg{width:17px;height:17px;stroke:currentColor;fill:none;stroke-width:2.1;stroke-linecap:round;stroke-linejoin:round}
+.panel-name{font-size:14px;color:var(--ink-mute);font-weight:600}
+
+.panel-body{padding:44px 0 90px}
+.panel-head{margin-bottom:34px;max-width:70ch}
+.panel-head .eyebrow{
+  font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--accent);font-weight:700;margin-bottom:12px;
+}
+.panel-head h2{font-size:clamp(26px,4vw,38px);line-height:1.14;letter-spacing:-.02em;font-weight:800;margin-bottom:12px}
+.panel-head p{font-size:16.5px;color:var(--ink-soft)}
+
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s cubic-bezier(.22,1,.36,1)}
+.reveal.in{opacity:1;transform:translateY(0)}
+
+/* ---------- ВИДЕО ---------- */
+.videos{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}
+.vid{
+  display:block;text-decoration:none;color:inherit;
+  background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--radius);overflow:hidden;
+  transition:transform .28s cubic-bezier(.22,1,.36,1),border-color .28s ease,box-shadow .28s ease;
+}
+.vid:hover{transform:translateY(-6px);border-color:var(--line-2);box-shadow:var(--shadow)}
+.vid-thumb{position:relative;aspect-ratio:9/16;background:#0a100e;overflow:hidden}
+.vid-thumb img{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  transition:transform .5s cubic-bezier(.22,1,.36,1);
+}
+.vid:hover .vid-thumb img{transform:scale(1.06)}
+.vid-thumb::before{
+  content:"";position:absolute;inset:0;z-index:1;
+  background:linear-gradient(to top,rgba(0,0,0,.55) 0%,transparent 45%);
+}
+.play{
+  position:absolute;z-index:2;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:58px;height:58px;border-radius:50%;
+  background:rgba(255,255,255,.94);
+  display:grid;place-items:center;
+  box-shadow:0 6px 22px rgba(0,0,0,.4);
+  transition:transform .28s cubic-bezier(.22,1,.36,1),background .28s ease;
+}
+.play::after{
+  content:"";border-left:15px solid #0F1614;
+  border-top:10px solid transparent;border-bottom:10px solid transparent;margin-left:4px;
+}
+.vid:hover .play{transform:translate(-50%,-50%) scale(1.12)}
+.vid-meta{padding:16px 18px}
+.tag{
+  display:inline-block;font-size:11px;font-weight:700;
+  letter-spacing:.07em;text-transform:uppercase;
+  color:var(--accent);background:var(--accent-soft);
+  padding:4px 10px;border-radius:6px;margin-bottom:9px;
+}
+.vid-meta h4{font-size:16px;font-weight:700;margin-bottom:5px;letter-spacing:-.01em}
+.vid-meta p{font-size:14px;color:var(--ink-soft)}
+
+/* ---------- КЕЙСЫ ---------- */
+.case{
+  background:var(--surface);border:1px solid var(--line);
+  border-left:3px solid var(--accent);
+  border-radius:var(--radius);padding:30px 28px;
+}
+.case + .case{margin-top:20px}
+.niche{
+  display:inline-block;font-size:12.5px;font-weight:650;
+  color:var(--accent);background:var(--accent-soft);
+  padding:5px 12px;border-radius:7px;margin-bottom:16px;
+}
+.case h4{font-size:20px;font-weight:750;letter-spacing:-.015em;margin-bottom:20px;line-height:1.28}
+.rows{display:grid;gap:18px}
+.row{display:grid;grid-template-columns:130px 1fr;gap:20px;align-items:start}
+.row .k{font-size:11.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--ink-mute);font-weight:700;padding-top:4px}
+.row .v{font-size:15.5px;color:var(--ink-soft)}
+.row .v ul{list-style:none}
+.row .v li{padding:4px 0 4px 17px;position:relative}
+.row .v li::before{content:"";position:absolute;left:0;top:14px;width:5px;height:5px;border-radius:50%;background:var(--accent);opacity:.65}
+.case-foot{margin-top:24px;padding-top:20px;border-top:1px solid var(--line);display:flex;gap:24px;flex-wrap:wrap}
+
+.link{
+  display:inline-flex;align-items:center;gap:7px;
+  font-size:14.5px;font-weight:650;color:var(--accent);text-decoration:none;
+  transition:gap .22s ease;
+}
+.link:hover{gap:11px}
+
+/* ---------- ДОКУМЕНТЫ ---------- */
+.docs{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:18px}
+.doc{
+  background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--radius);padding:24px 22px;
+  display:flex;flex-direction:column;
+  transition:transform .28s cubic-bezier(.22,1,.36,1),border-color .28s ease,box-shadow .28s ease;
+}
+.doc:hover{transform:translateY(-5px);border-color:var(--line-2);box-shadow:var(--shadow)}
+.doc-head{display:flex;gap:15px;align-items:flex-start;margin-bottom:14px}
+.doc-icon{
+  width:46px;height:auto;flex-shrink:0;border-radius:9px;
+  border:1px solid var(--line);background:#fff;
+}
+.doc-head .meta{font-size:12.5px;color:var(--ink-mute);margin-bottom:4px}
+.doc-head h4{font-size:17px;font-weight:700;letter-spacing:-.01em}
+.doc p{font-size:14.5px;color:var(--ink-soft);flex:1}
+.doc .link{margin-top:18px}
+.link-soon{
+  margin-top:18px;font-size:14px;color:var(--ink-mute);
+  display:inline-flex;align-items:center;gap:7px;
+}
+.link-soon::before{
+  content:"";width:6px;height:6px;border-radius:50%;
+  background:var(--ink-mute);opacity:.6;
+}
+
+/* ---------- БОТ ---------- */
+.bot{display:grid;grid-template-columns:1.1fr .9fr;gap:34px;align-items:start}
+.feat{list-style:none;margin-top:18px;display:grid;gap:11px}
+.feat li{font-size:15px;color:var(--ink-soft);padding-left:26px;position:relative}
+.feat li::before{
+  content:"";position:absolute;left:0;top:7px;width:15px;height:15px;border-radius:50%;
+  background:var(--accent-soft);border:1px solid var(--accent);
+}
+.feat li::after{
+  content:"";position:absolute;left:4.5px;top:11px;
+  width:5px;height:2.5px;border-left:2px solid var(--accent);border-bottom:2px solid var(--accent);
+  transform:rotate(-45deg);
+}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:22px}
+.chip{
+  font-size:13px;font-weight:650;color:var(--accent);
+  background:var(--accent-soft);border:1px solid var(--line);
+  padding:6px 13px;border-radius:8px;
+}
+.shot{
+  background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--radius);padding:14px;
+  display:grid;place-items:center;
+}
+.shot img{width:100%;max-width:300px;border-radius:11px;display:block}
+
+/* ---------- ОБО МНЕ ---------- */
+.about-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:40px}
+.about-grid h4{
+  font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--accent);font-weight:700;margin-bottom:16px;
+}
+.about-text p{font-size:16px;color:var(--ink-soft);margin-bottom:16px}
+.about-text p b{color:var(--ink);font-weight:650}
+.tl{list-style:none;position:relative;padding-left:24px}
+.tl::before{content:"";position:absolute;left:5px;top:8px;bottom:8px;width:1.5px;background:var(--line-2)}
+.tl li{position:relative;padding-bottom:22px}
+.tl li:last-child{padding-bottom:0}
+.tl li::before{
+  content:"";position:absolute;left:-24px;top:6px;
+  width:11px;height:11px;border-radius:50%;
+  background:var(--bg);border:2px solid var(--accent);
+}
+.tl .when{font-size:12.5px;color:var(--ink-mute);font-weight:600;margin-bottom:3px}
+.tl .what{font-size:16px;font-weight:700;margin-bottom:4px;letter-spacing:-.01em}
+.tl .desc{font-size:14.5px;color:var(--ink-soft)}
+
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:34px}
+.skill{
+  background:var(--surface);border:1px solid var(--line);
+  border-radius:14px;padding:20px;
+}
+.skill h5{font-size:15px;font-weight:700;margin-bottom:10px;display:flex;align-items:center;gap:9px}
+.skill h5 svg{width:17px;height:17px;stroke:var(--accent);fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.skill p{font-size:14px;color:var(--ink-soft)}
+
+/* ---------- КОНТАКТЫ ---------- */
+.contacts{
+  margin-top:40px;padding:34px 30px;
+  background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--radius);
+  display:flex;align-items:center;justify-content:space-between;gap:22px;flex-wrap:wrap;
+}
+.contacts h4{font-size:20px;font-weight:750;letter-spacing:-.015em;margin-bottom:5px}
+.contacts p{font-size:14.5px;color:var(--ink-soft)}
+.contacts .acts{display:flex;gap:10px;flex-wrap:wrap}
+
+.note{margin-top:22px;font-size:13.5px;color:var(--ink-mute)}
+
+/* ---------- АДАПТИВ ---------- */
+@media (max-width:1000px){
+  .grid{grid-template-columns:repeat(2,1fr)}
+  .bot{grid-template-columns:1fr;gap:26px}
+  .about-grid{grid-template-columns:1fr;gap:32px}
+  .shot img{max-width:260px}
+}
+@media (max-width:760px){
+  .topbar{padding:12px 0}
+  .topbar .wrap{gap:10px}
+  .brand span:not(.mark){font-size:15px}
+  .btn{padding:10px 16px;font-size:14px}
+  #home{min-height:auto;padding:88px 0 44px}
+  .hero{grid-template-columns:1fr;gap:18px;margin-bottom:26px}
+  .avatar{width:78px;height:78px;border-radius:20px;font-size:26px}
+  .hero-facts{gap:6px;margin-top:14px}
+  .hero-facts span{font-size:13.5px}
+  .hero-tags{margin-top:14px}
+  .hero-tags .chip{font-size:12px;padding:5px 11px}
+  .home-foot{flex-direction:column;align-items:flex-start;gap:12px;margin-top:24px}
+  .foot-links{width:100%}
+  .foot-links .btn{flex:1;justify-content:center;min-width:140px}
+  .grid{grid-template-columns:1fr 1fr;gap:12px}
+  .card{min-height:auto;padding:18px 16px;gap:10px}
+  .card .ico{width:38px;height:38px;border-radius:10px}
+  .card .ico svg{width:18px;height:18px}
+  .card h3{font-size:15.5px}
+  .card .sub{display:none}
+  .card .go{font-size:12.5px}
+  .row{grid-template-columns:1fr;gap:7px}
+  .case{padding:24px 20px}
+  .contacts{flex-direction:column;align-items:flex-start}
+  .panel-body{padding:32px 0 70px}
+  .videos{grid-template-columns:1fr;max-width:420px}
+  .vid-thumb{aspect-ratio:9/16}
+}
+@media (max-width:420px){
+  .grid{grid-template-columns:1fr}
+  .card{flex-direction:row;align-items:center;min-height:auto}
+  .card .go{margin-top:0;margin-left:auto}
+  .card .go span:not(.arr){display:none}
+  .wrap{padding:0 16px}
+  .hero-facts span:nth-child(3){display:none}
+  .hero-tags .chip:nth-child(3){display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms!important;transition-duration:.01ms!important}
+  .card,.reveal{opacity:1!important;transform:none!important}
+}
+</style>
+</head>
+<body>
+
+<div class="glow"><span></span><span></span><span></span></div>
+
+<!-- ================= ШАПКА ================= -->
+<div class="topbar" id="topbar">
+  <div class="wrap">
+    <a class="brand" href="#" onclick="goHome();return false">
+      <span class="mark">ХИ</span>
+      <span>Хан Исаак</span>
+    </a>
+    <div class="topbar-actions">
+      <button class="icon-btn" id="themeBtn" onclick="toggleTheme()" aria-label="Сменить тему">
+        <svg class="moon" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/></svg>
+        <svg class="sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+      <a class="btn btn-primary" href="resume.pdf" download>
+        <svg viewBox="0 0 24 24"><path d="M12 3v12M7 11l5 5 5-5M5 21h14"/></svg>
+        Резюме
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ================= ГЛАВНЫЙ ЭКРАН ================= -->
+<main id="home">
+  <div class="wrap">
+
+    <div class="hero">
+      <div class="avatar" id="avatar"><img src="assets/avatar.jpg" alt="Хан Исаак"></div>
+      <div>
+        <h1>Хан Исаак</h1>
+        <div class="role">
+          <b>SMM-специалист</b>
+          <span class="sep"></span>
+          <span>Алматы / удалённо</span>
+          <span class="status"><i></i>Открыт к работе</span>
+        </div>
+        <p class="pitch">
+          Закрываю контент целиком: от разбора аккаунта и стратегии — до <b>смонтированного ролика</b>.
+          Плюс автоматизирую рутину на Python.
+        </p>
+        <div class="hero-facts">
+          <span>Быстро вникаю в новую нишу — начинаю с рынка и конкурентов, а не с шаблонов</span>
+          <span>Довожу до плана действий, а не до списка проблем</span>
+          <span>Полтора года в маркетинге</span>
+        </div>
+        <div class="hero-tags">
+          <span class="chip">Аудит и стратегия</span>
+          <span class="chip">Premiere Pro · CapCut</span>
+          <span class="chip">Python · n8n · Claude Code</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid" id="grid">
+
+      <button class="card" onclick="openPanel('video')">
+        <span class="ico"><svg viewBox="0 0 24 24"><rect x="2" y="5" width="14" height="14" rx="2.5"/><path d="M16 10l6-3v10l-6-3"/></svg></span>
+        <h3>Видеомонтаж</h3>
+        <span class="sub">3 ролика · монтаж и анимация</span>
+        <span class="go"><span>Смотреть</span><span class="arr">→</span></span>
+      </button>
+
+      <button class="card" onclick="openPanel('audits')">
+        <span class="ico"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 15l4-5 3 3 5-7"/></svg></span>
+        <h3>Аудиты Instagram</h3>
+        <span class="sub">2 разбора · с отчётами PDF</span>
+        <span class="go"><span>Читать</span><span class="arr">→</span></span>
+      </button>
+
+      <button class="card" onclick="openPanel('plans')">
+        <span class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="17" rx="2.5"/><path d="M3 9h18M8 2v4M16 2v4M8 14h4"/></svg></span>
+        <h3>Контент-планы</h3>
+        <span class="sub">2 недельных плана</span>
+        <span class="go"><span>Читать</span><span class="arr">→</span></span>
+      </button>
+
+      <button class="card" onclick="openPanel('bot')">
+        <span class="ico"><svg viewBox="0 0 24 24"><rect x="4" y="7" width="16" height="13" rx="3"/><path d="M12 7V4M9 13h.01M15 13h.01M9 17h6"/></svg></span>
+        <h3>Telegram-бот</h3>
+        <span class="sub">Python · сбор заявок</span>
+        <span class="go"><span>Смотреть</span><span class="arr">→</span></span>
+      </button>
+
+    </div>
+
+    <div class="home-foot">
+      <span class="foot-label">Связаться</span>
+      <div class="foot-links">
+        <a class="btn btn-primary" href="https://t.me/re7ce" target="_blank" rel="noopener">Написать в Telegram</a>
+        <a class="btn btn-ghost" href="mailto:xcrausee@gmail.com">xcrausee@gmail.com</a>
+        <a class="btn btn-ghost" href="tel:+77474458531">+7 747 445 85 31</a>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<!-- ================= ПАНЕЛЬ: ВИДЕО ================= -->
+<div class="panel" id="p-video">
+  <div class="panel-bar">
+    <div class="wrap">
+      <button class="back" onclick="goHome()"><svg viewBox="0 0 24 24"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>Назад</button>
+      <span class="panel-name">Видео</span>
+    </div>
+  </div>
+  <div class="panel-body"><div class="wrap">
+    <div class="panel-head reveal">
+      <div class="eyebrow">Работы</div>
+      <h2>Видеомонтаж</h2>
+      <p>Вертикальные ролики: коммерческая работа и личные проекты. Динамика, анимация, работа со звуком. Adobe Premiere Pro и CapCut.</p>
+    </div>
+
+    <div class="videos">
+      <a class="vid reveal" href="https://youtube.com/shorts/veu0pOutN7Y" target="_blank" rel="noopener">
+        <div class="vid-thumb">
+          <img src="assets/v-veu0pOutN7Y.jpg" alt="Ролик про мобильное приложение" loading="lazy">
+          <span class="play"></span>
+        </div>
+        <div class="vid-meta">
+          <span class="tag">Коммерческая работа</span>
+          <h4>Мобильное приложение</h4>
+          <p>Задача — за 30 секунд показать функционал приложения</p>
+        </div>
+      </a>
+
+      <a class="vid reveal" href="https://youtube.com/shorts/IcTot6mfaO0" target="_blank" rel="noopener">
+        <div class="vid-thumb">
+          <img src="assets/v-IcTot6mfaO0.jpg" alt="Ролик с инфографикой" loading="lazy">
+          <span class="play"></span>
+        </div>
+        <div class="vid-meta">
+          <span class="tag">Личный проект</span>
+          <h4>Инфографика и анимация</h4>
+          <p>Задача — освоить анимированную инфографику</p>
+        </div>
+      </a>
+
+      <a class="vid reveal" href="https://youtube.com/shorts/vjvjCjOtpJY" target="_blank" rel="noopener">
+        <div class="vid-thumb">
+          <img src="assets/v-vjvjCjOtpJY.jpg" alt="Ролик с динамичным монтажом" loading="lazy">
+          <span class="play"></span>
+        </div>
+        <div class="vid-meta">
+          <span class="tag">Личный проект</span>
+          <h4>Динамичный монтаж</h4>
+          <p>Задача — удержать внимание зрителя темпом и склейками</p>
+        </div>
+      </a>
+    </div>
+
+    <p class="note reveal">Ролики открываются на YouTube в новой вкладке.</p>
+  </div></div>
+</div>
+
+<!-- ================= ПАНЕЛЬ: АУДИТЫ ================= -->
+<div class="panel" id="p-audits">
+  <div class="panel-bar">
+    <div class="wrap">
+      <button class="back" onclick="goHome()"><svg viewBox="0 0 24 24"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>Назад</button>
+      <span class="panel-name">Аудиты Instagram</span>
+    </div>
+  </div>
+  <div class="panel-body"><div class="wrap">
+    <div class="panel-head reveal">
+      <div class="eyebrow">Кейсы</div>
+      <h2>SMM-аудиты аккаунтов</h2>
+      <p>Два разбора Instagram-аккаунтов в нише ремонта под ключ. Разные компании и разные методы: в первом искал ответ внутри аккаунта, во втором — сравнивал с конкурентами.</p>
+    </div>
+
+    <div class="case reveal">
+      <span class="niche">Отделка квартир под ключ · Алматы</span>
+      <h4>Аккаунт собирает коллег, а не заказчиков</h4>
+      <div class="rows">
+        <div class="row">
+          <div class="k">Метод</div>
+          <div class="v"><ul>
+            <li>Выгрузил показатели: 63 ролика, просмотры, лайки, комментарии</li>
+            <li>Разобрал, кто пишет в комментариях — заказчики или коллеги по цеху</li>
+            <li>Сравнил залетевшие ролики с роликами про саму услугу</li>
+            <li>Проверил путь от просмотра до заявки: шапка, ссылка, контакты</li>
+          </ul></div>
+        </div>
+        <div class="row">
+          <div class="k">Что нашёл</div>
+          <div class="v">Аккаунт работал как сильный блог: лучший ролик — 124 000 просмотров, но в комментариях под ним ни одного заказчика, только коллеги. Ролики про саму услугу нравились людям сильнее залетевших, но собирали 700–1000 просмотров и тонули в выдаче. Между просмотром и звонком не было моста — контакт в шапке некликабельный.</div>
+        </div>
+        <div class="row">
+          <div class="k">На выходе</div>
+          <div class="v">Гипотеза о причине, прогноз по её проверке и пошаговый план с приоритетами</div>
+        </div>
+      </div>
+      <div class="case-foot">
+        <a class="link" href="assets/audit-full.pdf" target="_blank" rel="noopener">Открыть разбор, PDF <span>→</span></a>
+      </div>
+    </div>
+
+    <div class="case reveal">
+      <span class="niche">Ремонт под ключ · Алматы</span>
+      <h4>Хорошие кейсы есть — заявок из Instagram почти нет</h4>
+      <div class="rows">
+        <div class="row">
+          <div class="k">Метод</div>
+          <div class="v"><ul>
+            <li>Выгрузил профиль и разобрал 26 роликов</li>
+            <li>Сравнил аккаунт с тремя конкурентами по ремонту в Алматы</li>
+            <li>Оценил упаковку профиля: оффер, гарантия, призыв, путь к заявке</li>
+            <li>Посчитал отдачу лучших роликов относительно числа подписчиков</li>
+          </ul></div>
+        </div>
+        <div class="row">
+          <div class="k">Что нашёл</div>
+          <div class="v">Сильная база: реальные объекты, качественная съёмка, оформленный профиль с ценой за м², гарантией и призывом написать. Лучшие ролики давали до 7 500–8 100 просмотров — в 9–10 раз больше числа подписчиков. Потенциал есть, но он не конвертировался в заявки.</div>
+        </div>
+        <div class="row">
+          <div class="k">На выходе</div>
+          <div class="v">Разбор на 6 страниц со сравнением по конкурентам и планом изменений</div>
+        </div>
+      </div>
+      <div class="case-foot">
+        <a class="link" href="assets/audit-short.pdf" target="_blank" rel="noopener">Открыть разбор, PDF <span>→</span></a>
+      </div>
+    </div>
+
+    <p class="note reveal">Названия компаний в отчётах скрыты.</p>
+  </div></div>
+</div>
+
+<!-- ================= ПАНЕЛЬ: КОНТЕНТ-ПЛАНЫ ================= -->
+<div class="panel" id="p-plans">
+  <div class="panel-bar">
+    <div class="wrap">
+      <button class="back" onclick="goHome()"><svg viewBox="0 0 24 24"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>Назад</button>
+      <span class="panel-name">Контент-планы</span>
+    </div>
+  </div>
+  <div class="panel-body"><div class="wrap">
+    <div class="panel-head reveal">
+      <div class="eyebrow">Документы</div>
+      <h2>Контент-планы</h2>
+      <p>Недельные планы публикаций: на каждый день — формат, заголовок, полный текст для видео и текст описания. Reels и карусели, вопрос аудитории в конце каждого поста.</p>
+    </div>
+
+    <div class="docs">
+      <div class="doc reveal">
+        <div class="doc-head">
+          <img class="doc-icon" src="assets/icon-plan-1.png" alt="">
+          <div>
+            <div class="meta">Недельный план · 7 дней</div>
+            <h4>Контент-план, пример 1</h4>
+          </div>
+        </div>
+        <p>Пост на каждый день недели: Reels и карусели, полные тексты для видео и описаний.</p>
+        <span class="link-soon">Ссылка на документ — по запросу</span>
+      </div>
+
+      <div class="doc reveal">
+        <div class="doc-head">
+          <img class="doc-icon" src="assets/icon-plan-2.png" alt="">
+          <div>
+            <div class="meta">Недельный план · съёмка в поездке</div>
+            <h4>Контент-план, пример 2</h4>
+          </div>
+        </div>
+        <p>План под серию роликов, снятых в одной локации: как из общего повода собрать несколько разных историй, не повторяясь.</p>
+        <span class="link-soon">Ссылка на документ — по запросу</span>
+      </div>
+    </div>
+
+    <p class="note reveal">Тексты в примерах обезличены: показатели, личные и медицинские детали клиента убраны.</p>
+  </div></div>
+</div>
+
+<!-- ================= ПАНЕЛЬ: БОТ ================= -->
+<div class="panel" id="p-bot">
+  <div class="panel-bar">
+    <div class="wrap">
+      <button class="back" onclick="goHome()"><svg viewBox="0 0 24 24"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>Назад</button>
+      <span class="panel-name">Telegram-бот</span>
+    </div>
+  </div>
+  <div class="panel-body"><div class="wrap">
+    <div class="panel-head reveal">
+      <div class="eyebrow">Проект</div>
+      <h2>Telegram-бот квалификации лидов</h2>
+      <p>Бот-опросник для B2B: проводит входящий лид по 13 вопросам и отправляет собранную заявку администратору в Telegram. Менеджеру не нужно собирать первичные данные вручную.</p>
+    </div>
+
+    <div class="bot">
+      <div class="reveal">
+        <ul class="feat">
+          <li>Экран согласия на обработку персональных данных — без него опрос не стартует</li>
+          <li>13 вопросов по очереди: свободный текст и выбор кнопками</li>
+          <li>Защита от ввода текста там, где нужен выбор, и от нажатия кнопок старых вопросов</li>
+          <li>Итоговая заявка админу и сохранение в журнал, команды /start и /cancel</li>
+          <li>Вопросы правятся без кода — отдельный список вопросов и подписей полей</li>
+          <li>Готов к деплою: Docker, docker-compose, конфиг Fly.io, Procfile и тесты сценария</li>
+        </ul>
+        <div class="chips">
+          <span class="chip">Python</span>
+          <span class="chip">Telegram Bot API</span>
+          <span class="chip">Docker</span>
+          <span class="chip">Fly.io</span>
+          <span class="chip">Claude Code</span>
+        </div>
+      </div>
+      <div class="shot reveal">
+        <img src="assets/bot.jpg" alt="Заявка, которую бот отправляет администратору">
+      </div>
+    </div>
+
+    <p class="note reveal">На скриншоте — тестовые заявки, которые бот присылает администратору.</p>
+  </div></div>
+</div>
+
+<script>
+/* ---------- ТЕМА ---------- */
+(function(){
+  var t = null;
+  try { t = localStorage.getItem('theme'); } catch(e){}
+  if(t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+})();
+function toggleTheme(){
+  var el = document.documentElement;
+  var next = el.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+  el.setAttribute('data-theme', next);
+  try { localStorage.setItem('theme', next); } catch(e){}
+}
+
+/* ---------- НАВИГАЦИЯ ПО ПАНЕЛЯМ ---------- */
+var home = document.getElementById('home');
+var current = null;
+
+function openPanel(id){
+  var p = document.getElementById('p-' + id);
+  if(!p) return;
+  current = p;
+  home.classList.add('hidden');
+  p.classList.add('open');
+  p.scrollTop = 0;
+  document.body.classList.add('locked');
+  if(history.pushState) history.pushState({panel:id}, '', '#' + id);
+  revealIn(p);
+}
+
+function goHome(){
+  if(!current){ window.scrollTo({top:0,behavior:'smooth'}); return; }
+  current.classList.remove('open');
+  home.classList.remove('hidden');
+  document.body.classList.remove('locked');
+  var closing = current;
+  current = null;
+  setTimeout(function(){ resetReveal(closing); }, 400);
+  if(history.pushState) history.pushState({}, '', location.pathname + location.search);
+}
+
+window.addEventListener('popstate', function(e){
+  var id = e.state && e.state.panel;
+  if(id){
+    var p = document.getElementById('p-' + id);
+    if(p && p !== current){
+      if(current) current.classList.remove('open');
+      current = p; home.classList.add('hidden');
+      p.classList.add('open'); document.body.classList.add('locked');
+      revealIn(p);
+    }
+  } else if(current){
+    current.classList.remove('open');
+    home.classList.remove('hidden');
+    document.body.classList.remove('locked');
+    var closing = current; current = null;
+    setTimeout(function(){ resetReveal(closing); }, 400);
+  }
+});
+
+document.addEventListener('keydown', function(e){
+  if(e.key === 'Escape' && current) goHome();
+});
+
+/* ---------- ПОЯВЛЕНИЕ ЭЛЕМЕНТОВ ---------- */
+function revealIn(root){
+  var items = root.querySelectorAll('.reveal');
+  items.forEach(function(el, i){
+    setTimeout(function(){ el.classList.add('in'); }, 60 + i * 70);
+  });
+  /* подстраховка: всё, что осталось скрытым, показать при прокрутке */
+  if(window.IntersectionObserver){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); }
+      });
+    }, {root: root, threshold: .05});
+    items.forEach(function(el){ io.observe(el); });
+  } else {
+    items.forEach(function(el){ el.classList.add('in'); });
+  }
+}
+function resetReveal(root){
+  root.querySelectorAll('.reveal').forEach(function(el){ el.classList.remove('in'); });
+}
+
+/* стартовый каскад карточек */
+window.addEventListener('load', function(){
+  document.querySelectorAll('#grid .card').forEach(function(c, i){
+    setTimeout(function(){ c.classList.add('in'); }, 120 + i * 85);
+  });
+});
+
+/* подсветка под курсором */
+document.querySelectorAll('#grid .card').forEach(function(card){
+  card.addEventListener('mousemove', function(e){
+    var r = card.getBoundingClientRect();
+    card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+    card.style.setProperty('--my', (e.clientY - r.top) + 'px');
+  });
+});
+
+/* тень у шапки при скролле */
+var bar = document.getElementById('topbar');
+function onScroll(){
+  var y = current ? current.scrollTop : window.scrollY;
+  bar.classList.toggle('scrolled', y > 10);
+}
+window.addEventListener('scroll', onScroll, {passive:true});
+document.querySelectorAll('.panel').forEach(function(p){
+  p.addEventListener('scroll', onScroll, {passive:true});
+});
+
+/* открыть панель по хэшу в адресе */
+window.addEventListener('DOMContentLoaded', function(){
+  var h = location.hash.replace('#','');
+  if(h && document.getElementById('p-' + h)) openPanel(h);
+});
+</script>
+</body>
+</html>
