@@ -11,3 +11,7 @@ desktop.ini
 # временное
 tmp/
 *.log
+
+# старые превью (заменены на v-*) и локальный бэкап
+assets/thumb-*.jpg
+index-light-backup.html
