@@ -6,7 +6,7 @@
 
 ```
 index.html      — вся страница (стили и скрипты внутри)
-resume.pdf      — резюме, скачивается кнопкой в шапке
+resume.pdf      — резюме, скачивается кнопкой в шапке (исходник в resume-src/)
 assets/         — превью роликов, аватар, скриншот бота, PDF-отчёты
 Dockerfile      — образ на базе Caddy для деплоя
 Caddyfile       — конфиг раздачи статики
@@ -20,21 +20,27 @@ Caddyfile       — конфиг раздачи статики
 python3 -m http.server 8080
 ```
 
-## Деплой на Railway
+## Публикация
 
-1. Создать новый проект → Deploy from GitHub repo
-2. Выбрать этот репозиторий
-3. Railway найдёт `Dockerfile` и соберёт образ сам
-4. В настройках сервиса: Networking → Generate Domain
+Сайт раздаёт GitHub Pages: https://crauseipad-star.github.io/portfolio/
+Settings → Pages → Deploy from a branch → `main`, папка `/ (root)`. После `git push` сайт обновляется за 1–2 минуты.
+`Dockerfile` и `Caddyfile` остались от старого хостинга на Railway, для Pages они не нужны.
 
-Переменную `PORT` Railway передаёт автоматически, Caddyfile её подхватывает.
+## Резюме
+
+Исходник `resume-src/resume.html`. PDF собирается через Chrome:
+`chrome --headless=new --no-pdf-header-footer --print-to-pdf=resume.pdf resume-src/resume.html` (страницу открыть через локальный сервер, чтобы подтянулось фото).
+
+## Ролики
+
+Новые ролики лежат в `assets/video/` (mp4 + обложка jpg) и играют прямо на странице. Перед добавлением: `ffmpeg -i in.mp4 -c copy -movflags +faststart out.mp4`.
 
 ## Разделы
 
-Главный экран — блок «обо мне» и четыре карточки. Каждая раскрывается в полноэкранную панель:
+Главный экран — блок «обо мне», четыре карточки и блок «Опыт». Каждая раскрывается в полноэкранную панель:
 
-- **Видеомонтаж** — 3 ролика, ссылки на YouTube
-- **Аудиты Instagram** — 2 разбора с PDF-отчётами
+- **Видеомонтаж** — 6 роликов: 3 играют на странице, 3 по ссылкам на YouTube
+- **Разборы Instagram** — разбор ведущего праздников (имя скрыто), PDF и 4 экрана
 - **Контент-планы** — 2 недельных плана, ссылки на Google Docs
 - **Telegram-бот** — проект на Python
 
